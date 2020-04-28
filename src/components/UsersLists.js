@@ -15,11 +15,11 @@ const UsersLists = ({ users, fetchUsers }) => {
             <Link to={`/users/${user.id}`} className="userlist__list__item">
               <p className="userlist__list__text">
                 <span className="userlist__list__text--firstname">
-                  First Name
+                  First Name:
                 </span>
                 {`${user.first_name}`}
                 <span className="userlist__list__text--lastname">
-                  Last Name
+                  Last Name:
                 </span>
                 {`${user.last_name}`}
               </p>

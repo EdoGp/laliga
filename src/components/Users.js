@@ -48,77 +48,106 @@ const Users = ({ fetchUser, user, deleteUser, updateUser }) => {
   }, [user]);
 
   return (
-    <>
-      <button className="btn" onClick={onDeleteClick}>
-        Delete
-      </button>
-      {!edit && (
-        <button className="btn" onClick={onEditClick}>
-          Edit
+    <div className="userdetails">
+      <div className="userdetails__buttons">
+        <button className="btn" onClick={onDeleteClick}>
+          Delete
         </button>
-      )}
-      {edit && (
-        <button className="btn" onClick={onSaveClick}>
-          Save
-        </button>
-      )}
-      {edit && (
-        <button
-          className="btn"
-          onClick={() => {
-            setEdit(false);
-          }}
-        >
-          Cancel
-        </button>
-      )}
+        {!edit && (
+          <button className="btn" onClick={onEditClick}>
+            Edit
+          </button>
+        )}
+        {edit && (
+          <button className="btn" onClick={onSaveClick}>
+            Save
+          </button>
+        )}
+        {edit && (
+          <button
+            className="btn"
+            onClick={() => {
+              setEdit(false);
+            }}
+          >
+            Cancel
+          </button>
+        )}
+      </div>
       {user[0] && (
-        <>
+        <div className="userdetails__info">
           {!edit && (
-            <div>
-              <div>
-                <span>Fist name</span>
-                <span>{user[0].first_name}</span>
+            <>
+              <div className="userdetails__info__text">
+                <span className="userdetails__info__text--label">
+                  Fist name
+                </span>
+                <span className="userdetails__info__text--value">
+                  {user[0].first_name}
+                </span>
               </div>
-              <div>
-                <span>Last name</span>
-                <span>{user[0].lastt_name}</span>
+              <div className="userdetails__info__text">
+                <span className="userdetails__info__text--label">
+                  Last name
+                </span>
+                <span className="userdetails__info__text--value">
+                  {user[0].last_name}
+                </span>
               </div>
-              <div>
-                <span>email</span>
-                <span>{user[0].email}</span>
+              <div className="userdetails__info__text">
+                <span className="userdetails__info__text--label">email</span>
+                <span className="userdetails__info__text--value">
+                  {user[0].email}
+                </span>
               </div>
-            </div>
+            </>
           )}{' '}
           {edit && (
-            <form onChange={handleFormChange}>
-              <label htmlFor="">First Name</label>
-              <input
-                type="text"
-                value={form.first_name}
-                onChange={handleFormChange}
-                id="first_name"
-              />
-              <label htmlFor="">Last Name</label>
-              <input
-                type="text"
-                value={form.last_name}
-                onChange={handleFormChange}
-                id="last_name"
-              />
-              <label htmlFor="">Email</label>
-              <input
-                type="email"
-                value={form.email}
-                onChange={handleFormChange}
-                id="email"
-              />
+            <form className="form" onChange={handleFormChange}>
+              <div>
+                <input
+                  className="form__input"
+                  type="text"
+                  value={form.first_name}
+                  onChange={handleFormChange}
+                  id="first_name"
+                />
+                <label htmlFor="first_name" className="form__label">
+                  First Name
+                </label>
+              </div>
+              <div className="form__group">
+                <input
+                  className="form__input"
+                  type="text"
+                  value={form.last_name}
+                  onChange={handleFormChange}
+                  id="last_name"
+                />
+                <label htmlFor="last_name" className="form__label">
+                  Last Name
+                </label>
+              </div>
+              <div className="form__group">
+                <input
+                  className="form__input"
+                  type="email"
+                  value={form.email}
+                  onChange={handleFormChange}
+                  id="email"
+                />
+                <label htmlFor="email" className="form__label">
+                  Email
+                </label>
+              </div>
             </form>
           )}
-        </>
+        </div>
       )}
-      <Link to={`/users`}>Back</Link>
-    </>
+      <Link className="btn-link" to={`/users`}>
+        Back
+      </Link>
+    </div>
   );
 };
 
