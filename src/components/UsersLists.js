@@ -1,25 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchUsers } from './../actions';
 
-const UsersLists = (props) => {
+const UsersLists = ({ users, fetchUsers }) => {
+  useEffect(() => {
+    fetchUsers();
+  }, [fetchUsers]);
   return (
     <div>
-      test users list
       <nav>
         <ul>
-          <li>
-            <Link to='/users/1'>Users1</Link>
-          </li>
-          <li>
-            <Link to='/users/2'>Users2</Link>
-          </li>
-          <li>
-            <Link to='/users/3'>Users3</Link>
-          </li>
-          <li>
-            <Link to='/users/4'>Users4</Link>
-          </li>
+          {users.map((user, index) => {
+            return (
+              <Link to={`/users/${user.id}`}>
+                <p>
+                  <span>First Name</span>
+                  {`${user.first_name}`}
+                  <span>Last Name</span>
+                  {`${user.last_name}`}
+                </p>
+              </Link>
+            );
+          })}
         </ul>
       </nav>
     </div>
@@ -28,4 +32,8 @@ const UsersLists = (props) => {
 
 UsersLists.propTypes = {};
 
-export default UsersLists;
+const mapStateToProps = (state) => {
+  return { users: state.users };
+};
+
+export default connect(mapStateToProps, { fetchUsers })(UsersLists);

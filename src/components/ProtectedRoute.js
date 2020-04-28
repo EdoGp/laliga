@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 
-const ProtectedRoute = ({ children, ...rest }) => {
+const ProtectedRoute = ({ isSignedIn, children, ...rest }) => {
   return (
     <div>
       <Route
         {...rest}
         render={({ location }) =>
-          fakeAuth.isAuthenticated ? (
+          isSignedIn ? (
             children
           ) : (
             <Redirect
@@ -27,4 +28,8 @@ const ProtectedRoute = ({ children, ...rest }) => {
 
 ProtectedRoute.propTypes = {};
 
-export default ProtectedRoute;
+const mapStateToProps = (state) => {
+  return { isSignedIn: state.auth.isSignedIn };
+};
+
+export default connect(mapStateToProps, {})(ProtectedRoute);
