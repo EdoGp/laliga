@@ -1,13 +1,12 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { fetchUsers } from './../actions';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { fetchUsers } from './../actions'
 
 const UsersLists = ({ users, fetchUsers }) => {
   useEffect(() => {
-    fetchUsers();
-  }, [fetchUsers]);
+    fetchUsers()
+  }, [fetchUsers])
   return (
     <div>
       <nav>
@@ -22,18 +21,18 @@ const UsersLists = ({ users, fetchUsers }) => {
                   {`${user.last_name}`}
                 </p>
               </Link>
-            );
+            )
           })}
         </ul>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-UsersLists.propTypes = {};
+UsersLists.propTypes = {}
 
 const mapStateToProps = (state) => {
-  return { users: state.users };
-};
+  return { users: state.users }
+}
 
-export default connect(mapStateToProps, { fetchUsers })(UsersLists);
+export default connect(mapStateToProps, { fetchUsers })(UsersLists)
