@@ -1,0 +1,83 @@
+@mixin clearfix {
+  &:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin absCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin hoverScale {
+  &:hover {
+    transform: translateY(-0.5rem) scale(1.25);
+  }
+}
+
+@mixin hoverBoxShadow {
+  box-shadow: 0 1.5rem 4rem rgba($light-text-color, 0.4);
+}
+
+@mixin style-link-text($color) {
+  text-decoration: none;
+  text-transform: uppecase;
+  color: $color;
+}
+
+// MEDIA QUERY MANAGER
+/*
+0 - 600px:      Phone
+600 - 900px:    Tablet Portrait
+900 - 1200px:   Tablet Landscape
+1200 - 1800px:  Default
+1800px +        Big Desktop
+*/
+
+/*
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+1m = 16px
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      //37.5em = 600px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) {
+      //56.25em = 900px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) {
+      //75em = 1200px
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    // 1800px
+    @media (min-width: 112.5em) {
+      // 112.5em = 1800px
+      @content;
+    }
+  }
+}
+
+%btn-placeholder {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 100px;
+  width: $width-button;
+  @include style-link-text($dark-text-color);
+}

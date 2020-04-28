@@ -15,13 +15,33 @@ const Home = ({ signIn }) => {
   };
 
   return (
-    <div>
-      <form onChange={handleForm}>
-        <label htmlFor='email'>Email</label>
-        <input type='email' id='email' value={loginForm.email} />
-        <label htmlFor='password'>password</label>
-        <input type='password' id='password' value={loginForm.password} />
-        <button onClick={handleClick}>Login</button>
+    <div className="home__component">
+      <form onChange={handleForm} className="form">
+        <div className="form__group">
+          <input
+            type="email"
+            id="email"
+            value={loginForm.email}
+            className="form__input"
+          />
+          <label htmlFor="email" className="form__label">
+            Email
+          </label>
+        </div>
+        <div className="form__group">
+          <input
+            type="password"
+            id="password"
+            value={loginForm.password}
+            className="form__input"
+          />
+          <label htmlFor="password" className="form__label">
+            Password
+          </label>
+        </div>
+        <button className="btn" onClick={handleClick}>
+          Login
+        </button>
       </form>
     </div>
   );

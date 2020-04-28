@@ -1,0 +1,18 @@
+.nav {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  .list {
+    display: flex;
+    margin: 20px;
+    list-style: none;
+    &__item {
+      margin: 10px 20px;
+      padding: 10px;
+      &:hover {
+        color: black;
+        background-color: white;
+      }
+    }
+  }
+}

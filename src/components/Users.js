@@ -49,14 +49,26 @@ const Users = ({ fetchUser, user, deleteUser, updateUser }) => {
 
   return (
     <>
-      <button onClick={onDeleteClick}>Delete</button>
-      {!edit && <button onClick={onEditClick}>Edit</button>}
-      {edit && <button onClick={onSaveClick}>Save</button>}
+      <button className="btn" onClick={onDeleteClick}>
+        Delete
+      </button>
+      {!edit && (
+        <button className="btn" onClick={onEditClick}>
+          Edit
+        </button>
+      )}
+      {edit && (
+        <button className="btn" onClick={onSaveClick}>
+          Save
+        </button>
+      )}
       {edit && (
         <button
+          className="btn"
           onClick={() => {
             setEdit(false);
-          }}>
+          }}
+        >
           Cancel
         </button>
       )}
@@ -80,12 +92,27 @@ const Users = ({ fetchUser, user, deleteUser, updateUser }) => {
           )}{' '}
           {edit && (
             <form onChange={handleFormChange}>
-              <label htmlFor=''>First Name</label>
-              <input type='text' value={form.first_name} onChange={handleFormChange} id='first_name' />
-              <label htmlFor=''>Last Name</label>
-              <input type='text' value={form.last_name} onChange={handleFormChange} id='last_name' />
-              <label htmlFor=''>Email</label>
-              <input type='email' value={form.email} onChange={handleFormChange} id='email' />
+              <label htmlFor="">First Name</label>
+              <input
+                type="text"
+                value={form.first_name}
+                onChange={handleFormChange}
+                id="first_name"
+              />
+              <label htmlFor="">Last Name</label>
+              <input
+                type="text"
+                value={form.last_name}
+                onChange={handleFormChange}
+                id="last_name"
+              />
+              <label htmlFor="">Email</label>
+              <input
+                type="email"
+                value={form.email}
+                onChange={handleFormChange}
+                id="email"
+              />
             </form>
           )}
         </>
@@ -103,4 +130,6 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchUser, updateUser, deleteUser })(Users);
+export default connect(mapStateToProps, { fetchUser, updateUser, deleteUser })(
+  Users
+);

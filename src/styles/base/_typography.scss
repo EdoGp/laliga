@@ -1,0 +1,25 @@
+body {
+  font-family: $lato;
+  font-weight: 400;
+  // font-size: $fontSize;
+  line-height: 1.7;
+  background-color: $dark-primary;
+  color: $dark-text-color;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $oswald;
+}
