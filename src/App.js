@@ -34,16 +34,13 @@ function App({ isSignedIn }) {
           </ul>
         </nav>
         <Switch>
-          <Route exact path='/users'>
-            {/* <ProtectedRoute exact path='/users'> */}
+          <ProtectedRoute exact path='/users'>
             <UsersList />
-            {/* </ProtectedRoute> */}
-          </Route>
-          <Route exact path='/users/:id'>
-            {/* <ProtectedRoute exact path='/users'> */}
+          </ProtectedRoute>
+
+          <ProtectedRoute exact path='/users/:id'>
             <Users />
-            {/* </ProtectedRoute> */}
-          </Route>
+          </ProtectedRoute>
           <Route path='/'>
             <Home />
           </Route>

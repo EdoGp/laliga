@@ -12,23 +12,29 @@ export const fetchUsers = () => async (dispatch) => {
   });
 };
 
-export const updateUser = () => async (dispatch) => {
-  const response = await ApiService.get('/users');
+export const updateUser = (id, form) => (dispatch) => {
+  _updateUser(id, form, dispatch);
+};
 
+export const deleteUser = (id) => (dispatch) => {
+  _deleteUser(id, dispatch);
+};
+
+const _updateUser = _.memoize(async (id, form, dispatch) => {
+  const response = await ApiService.put(`/user${id}`, form);
   dispatch({
     type: PUT_USER,
     payload: response.data.data,
   });
-};
+});
 
-export const deleteUser = () => async (dispatch) => {
-  const response = await ApiService.get('/users');
-
+const _deleteUser = _.memoize(async (id, dispatch) => {
+  const response = await ApiService.delete(`/user/${id}`);
   dispatch({
     type: DELETE_USER,
     payload: response.data.data,
   });
-};
+});
 
 export const signIn = (form) => (dispatch) => {
   _signIn(form, dispatch);
